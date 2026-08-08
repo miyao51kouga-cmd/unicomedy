@@ -95,3 +95,5 @@ footer{padding:32px clamp(20px,7vw,110px);display:flex;justify-content:space-bet
   .unit-dialog-head,.unit-history-list{padding-left:20px;padding-right:20px}
   .unit-history-row{grid-template-columns:28px 1fr 82px}
 }
+
+.seo-static{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:normal}
