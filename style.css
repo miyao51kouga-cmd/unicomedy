@@ -55,3 +55,43 @@ footer{padding:32px clamp(20px,7vw,110px);display:flex;justify-content:space-bet
   .dialog-head,.stage-wrap{padding-left:20px;padding-right:20px}
   .result-row::after{display:none}
 }
+
+
+/* v4 */
+.badge-on-accent{
+  color:#fff!important;
+  background:transparent;
+  text-shadow:0 1px 2px rgba(0,0,0,.3);
+  width:max-content;
+}
+.hero-on-accent{
+  color:#fff!important;
+  text-shadow:0 1px 2px rgba(0,0,0,.3);
+}
+.unit-composition{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.unit-chip{display:inline-flex;align-items:center;gap:5px;padding:5px 7px;background:#f3f1eb;border:1px solid #d8d3c8;font-size:10px;line-height:1.2}
+.unit-chip em{font-style:normal;font-weight:900;color:#777}
+.unit-link{appearance:none;border:0;background:none;padding:0;color:#1769c2;text-decoration:underline;text-underline-offset:2px;font:inherit;font-weight:800;cursor:pointer}
+.unit-link:hover{opacity:.7}
+.unit-plain{font-weight:800}
+.latest-card .unit-composition{margin-top:2px;margin-bottom:10px}
+.latest-card .unit-chip{background:rgba(255,255,255,.9)}
+.result-row .unit-composition{margin-top:7px}
+.result-row .unit-chip{background:#242424;border-color:#444;color:#eee}
+.result-row .unit-chip em{color:#aaa}
+.result-row .unit-link{color:#71b5ff}
+.unit-dialog-head{padding:38px 38px 24px;border-bottom:1px solid #d8d3c8}
+.unit-dialog-head h2{font-size:clamp(30px,6vw,52px);margin:6px 0 10px;letter-spacing:-.04em}
+.unit-dialog-head p{font-size:12px;line-height:1.8;color:#666;max-width:680px}
+.unit-history-list{padding:20px 38px 40px}
+.unit-history-row{width:100%;display:grid;grid-template-columns:36px 1fr 110px;gap:10px;text-align:left;align-items:center;border:0;border-bottom:1px solid #d8d3c8;background:transparent;padding:16px 6px;cursor:pointer;color:#111}
+.unit-history-row:hover{background:#fff}
+.unit-history-row>span{font-size:10px;color:#777}
+.unit-history-row>b{font-size:13px}
+.unit-history-row>strong{text-align:right;font-size:12px}
+.unit-history-row>small{grid-column:2/4;color:#777;font-size:10px}
+.entry .unit-composition{grid-column:1/-1}
+@media(max-width:650px){
+  .unit-dialog-head,.unit-history-list{padding-left:20px;padding-right:20px}
+  .unit-history-row{grid-template-columns:28px 1fr 82px}
+}
