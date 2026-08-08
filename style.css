@@ -17,3 +17,41 @@ nav{display:flex;gap:28px}nav a{font-size:12px;font-weight:700;color:inherit;tex
 .about{padding:85px clamp(20px,7vw,110px);background:var(--accent);color:#fff;display:grid;grid-template-columns:1fr 1fr;gap:70px}.about-copy{font-size:14px;line-height:2}.sources{padding-top:40px;padding-bottom:40px}.sources details{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}.sources summary{cursor:pointer;font-weight:700;font-size:13px}.source-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}.source-links a{color:#555;font-size:12px}
 footer{padding:32px clamp(20px,7vw,110px);display:flex;justify-content:space-between;font-size:10px;letter-spacing:1px}
 @media(max-width:820px){.site-header nav{display:none}.menu{display:block}.hero{grid-template-columns:1fr;padding-top:60px;background:linear-gradient(160deg,#171717 0 76%,var(--accent) 76%)}.hero-card{max-width:430px;transform:none}.latest-grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.result-row{grid-template-columns:64px 1fr}.type{grid-column:2}.winner{grid-column:2}.awards{grid-column:2}.champion-columns,.about{grid-template-columns:1fr}.stats strong{font-size:26px}.stats div{padding:24px 8px}.section{padding-top:60px;padding-bottom:60px}.section-head{display:block}.section-note{margin-top:10px}footer{gap:20px;flex-direction:column}}
+
+
+/* v2: circle colors + event detail */
+.latest-card,.hero-card{transition:transform .2s ease,box-shadow .2s ease}
+.latest-card[data-clickable="true"]{cursor:pointer}
+.latest-card[data-clickable="true"]:hover{transform:translateY(-3px)}
+.hero-card{border-top:8px solid var(--card-accent,#ffd84a)}
+.result-row{cursor:pointer;position:relative;transition:background .18s ease}
+.result-row:hover{background:#1b1b1b}
+.result-row::after{content:"詳細 →";font-size:10px;letter-spacing:1px;color:#888;position:absolute;right:10px;bottom:7px}
+.winner-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:9px;background:var(--row-accent,#888)}
+.archive-tip{font-size:11px;color:#888;margin-top:18px}
+.event-dialog{width:min(920px,calc(100vw - 28px));max-height:88vh;border:0;padding:0;background:#f5f2eb;color:#111;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.event-dialog::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(3px)}
+.dialog-close{position:sticky;float:right;top:12px;right:12px;z-index:3;border:0;width:42px;height:42px;border-radius:50%;font-size:27px;background:#111;color:#fff;cursor:pointer}
+.dialog-head{padding:38px 38px 28px;border-top:10px solid var(--event-accent,#111);border-bottom:1px solid #d8d3c8}
+.dialog-kicker{font-size:10px;letter-spacing:2px;font-weight:900;color:#666}
+.dialog-head h2{font-size:clamp(28px,5vw,48px);margin:9px 0 8px;letter-spacing:-.04em}
+.dialog-champion{font-weight:900;font-size:18px}
+.dialog-school{font-size:12px;color:#666;margin-top:5px}
+.stage-wrap{padding:28px 38px 40px}
+.stage{margin-bottom:30px}
+.stage h3{margin:0 0 13px;font-size:18px;display:flex;align-items:center;gap:10px}
+.stage h3::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--event-accent,#111)}
+.stage-note{font-size:11px;color:#777;margin:-6px 0 14px}
+.entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.entry{border:1px solid #d8d3c8;background:#fff;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.entry-rank{font-size:10px;font-weight:900;background:#111;color:#fff;min-width:30px;text-align:center;padding:5px 6px}
+.entry b{display:block;font-size:13px}
+.entry small{display:block;color:#777;margin-top:3px;line-height:1.45}
+.source-chip{display:inline-block;margin:6px 7px 0 0;padding:7px 10px;border:1px solid #c9c3b7;color:#333;text-decoration:none;font-size:10px;background:#fff}
+.data-status{display:inline-flex;align-items:center;gap:6px;font-size:10px;margin-top:12px;color:#666}
+.data-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#2c9a4b}
+@media(max-width:650px){
+  .entry-grid{grid-template-columns:1fr}
+  .dialog-head,.stage-wrap{padding-left:20px;padding-right:20px}
+  .result-row::after{display:none}
+}

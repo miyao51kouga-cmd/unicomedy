@@ -33,7 +33,7 @@
       <a class="button secondary" href="#champions">歴代王者を見る</a>
     </div>
   </div>
-  <div class="hero-card">
+  <div id="heroChampion" class="hero-card">
     <span class="live-dot"></span><b>NEWEST RESULT</b>
     <p>NOROSHI 2026</p>
     <strong>筑波大学お笑い集団DONPAPA<br>チーム絵本作家</strong>
@@ -74,6 +74,7 @@
   </div>
   <div id="resultList" class="result-list"></div>
   <p id="empty" class="empty" hidden>条件に一致する結果がありません。</p>
+  <p class="archive-tip">大会をタップすると、決勝進出・準決勝進出・敗者復活戦進出などの詳細を表示します。</p>
 </section>
 
 <section id="champions" class="section">
@@ -117,6 +118,11 @@
   </details>
 </section>
 </main>
+
+<dialog id="eventDialog" class="event-dialog">
+  <button id="closeDialog" class="dialog-close" aria-label="閉じる">×</button>
+  <div id="dialogContent"></div>
+</dialog>
 
 <footer>
   <b>大学お笑い RESULTS ARCHIVE</b>
