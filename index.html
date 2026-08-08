@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="大学芸会個人戦・旧団体戦・NOROSHIの結果をまとめる非公式データベース">
+  <title>大学お笑い RESULTS ARCHIVE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#">
+    <span class="brand-mark">大</span>
+    <span><b>大学お笑い</b><small>RESULTS ARCHIVE</small></span>
+  </a>
+  <button class="menu" aria-label="メニュー">☰</button>
+  <nav>
+    <a href="#latest">最新結果</a>
+    <a href="#archive">大会一覧</a>
+    <a href="#champions">歴代王者</a>
+    <a href="#about">このサイトについて</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">UNIVERSITY COMEDY DATABASE</p>
+    <h1>大学お笑いの<br><span>結果が、ここに。</span></h1>
+    <p class="lead">大学芸会 個人戦・旧団体戦、全国お笑いサークル団体戦 NOROSHI の結果を、年度・大会・大学から探せる非公式アーカイブ。</p>
+    <div class="hero-actions">
+      <a class="button primary" href="#archive">大会結果を見る</a>
+      <a class="button secondary" href="#champions">歴代王者を見る</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <span class="live-dot"></span><b>NEWEST RESULT</b>
+    <p>NOROSHI 2026</p>
+    <strong>筑波大学お笑い集団DONPAPA<br>チーム絵本作家</strong>
+    <small>2026 CHAMPION</small>
+  </div>
+</section>
+
+<section class="stats">
+  <div><strong id="eventCount">0</strong><span>収録大会</span></div>
+  <div><strong id="yearCount">0</strong><span>収録年度</span></div>
+  <div><strong id="schoolCount">0</strong><span>掲載大学・団体</span></div>
+</section>
+
+<section id="latest" class="section">
+  <div class="section-head">
+    <div><p class="eyebrow dark">LATEST</p><h2>最新の決勝結果</h2></div>
+    <p class="section-note">現在確認できている公開情報を掲載</p>
+  </div>
+  <div id="latestCards" class="latest-grid"></div>
+</section>
+
+<section id="archive" class="section archive-section">
+  <div class="section-head">
+    <div><p class="eyebrow dark">ARCHIVE</p><h2>大会結果を探す</h2></div>
+  </div>
+  <div class="filters">
+    <label class="searchbox">
+      <span>⌕</span>
+      <input id="search" type="search" placeholder="芸人名・チーム名・大学名で検索">
+    </label>
+    <select id="typeFilter">
+      <option value="all">すべての大会</option>
+      <option value="individual">大学芸会 個人戦</option>
+      <option value="old-team">旧・大学芸会 団体戦</option>
+      <option value="noroshi">NOROSHI</option>
+    </select>
+    <select id="yearFilter"><option value="all">すべての年度</option></select>
+  </div>
+  <div id="resultList" class="result-list"></div>
+  <p id="empty" class="empty" hidden>条件に一致する結果がありません。</p>
+</section>
+
+<section id="champions" class="section">
+  <div class="section-head">
+    <div><p class="eyebrow dark">CHAMPIONS</p><h2>歴代優勝者</h2></div>
+    <p class="section-note">公開情報を順次追加予定</p>
+  </div>
+  <div class="champion-columns">
+    <div>
+      <h3>大学芸会 個人戦</h3>
+      <div id="individualChampions" class="timeline"></div>
+    </div>
+    <div>
+      <h3>NOROSHI</h3>
+      <div id="noroshiChampions" class="timeline"></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div>
+    <p class="eyebrow">ABOUT</p>
+    <h2>大学お笑いの記録を、<br>もっと探しやすく。</h2>
+  </div>
+  <div class="about-copy">
+    <p>大学芸会は2011年に始まった学生お笑い大会です。かつては夏に個人戦、冬に団体戦が行われ、2015年から団体戦は「NOROSHI」として展開されています。</p>
+    <p>このサイトは非公式のファンメイド・データベースです。結果は大会公式サイト・公式SNS・大会レポート等の公開情報をもとに整理しています。</p>
+  </div>
+</section>
+
+<section class="sources section">
+  <details>
+    <summary>掲載データの主な出典</summary>
+    <div class="source-links">
+      <a href="https://daigakugeikai2024.jimdosite.com/" target="_blank" rel="noreferrer">大学芸会個人戦2024 公式</a>
+      <a href="https://noroshi2025.jimdosite.com/" target="_blank" rel="noreferrer">NOROSHI2025 公式</a>
+      <a href="https://noroshi2024.jimdosite.com/" target="_blank" rel="noreferrer">NOROSHI2024 公式</a>
+      <a href="https://ameblo.jp/geikaiblog/" target="_blank" rel="noreferrer">大学芸会運営スタッフブログ</a>
+      <a href="https://butterflybutterfly.jp/project/noroshi/" target="_blank" rel="noreferrer">βutterfly 大会記事</a>
+    </div>
+  </details>
+</section>
+</main>
+
+<footer>
+  <b>大学お笑い RESULTS ARCHIVE</b>
+  <span>Unofficial fan-made database</span>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
