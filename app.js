@@ -197,3 +197,4 @@ DATA.forEach(d=>["school","runnerSchool","thirdSchool","judgeSchool"].forEach(k=
  const v=d[k]; if(v && !v.includes("公開情報") && v!=="—" && !v.includes("個人戦") && !v.includes("団体戦")) schools.add(v);
 }));
 document.querySelector("#schoolCount").textContent=schools.size;
+console.log("UniComedy loaded");
