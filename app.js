@@ -10336,28 +10336,27 @@ const unitDialogContent = document.querySelector("#unitDialogContent");
 
 // Stage strength: same event/year appearing in semifinal and final should resolve to the furthest stage only.
 function stageScore(title=""){
-  // 到達した最終ラウンドを返す。
-  // 「準決勝」の中にも「決勝」という文字が含まれるため、
-  // 文字列の単純一致ではなく意味ごとに判定する。
+  // 到達ラウンド判定。
+  // 「準決勝進出」は準決勝到達、「決勝進出」は決勝到達として厳密に区別する。
 
-  // 決勝そのもの（決勝結果・決勝香盤・決勝進出者など）
+  // 決勝そのもの
   if(title.includes("決勝結果")) return 4;
   if(title.includes("決勝戦")) return 4;
   if(title.startsWith("決勝")) return 4;
 
-  // 準決勝から決勝へ勝ち上がった一覧
-  if(title.includes("準決勝") && title.includes("決勝進出")) return 4;
+  // 「準決勝進出」には「決勝進出」という文字列が内包されるため先に判定
+  if(title.includes("準決勝進出")) return 3;
 
-  // 敗者復活戦から準決勝へ勝ち上がった一覧
-  if(title.startsWith("敗者復活") && title.includes("準決勝進出")) return 3;
-
-  // 予選から準決勝へ勝ち上がった一覧
-  if(title.startsWith("予選") && title.includes("準決勝進出")) return 3;
+  // 「決勝進出」と明記された勝ち上がり
+  if(title.includes("決勝進出")) return 4;
 
   // 準決勝そのもの
   if(title.includes("準決勝")) return 3;
 
-  // 敗者復活戦
+  // 「敗者復活戦進出」と明記された場合は敗者復活戦到達
+  if(title.includes("敗者復活戦進出")) return 2;
+
+  // 敗者復活戦そのもの
   if(title.includes("敗者復活")) return 2;
 
   // 予選
