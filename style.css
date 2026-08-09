@@ -136,3 +136,29 @@ footer{padding:32px clamp(20px,7vw,110px);display:flex;justify-content:space-bet
   word-break: break-word;
   overflow-wrap: anywhere;
 }
+
+
+/* v13: ユニット名を必ず全文表示 */
+.unit-chip{
+  white-space: normal !important;
+  width: auto !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+}
+.unit-chip .unit-link,
+.unit-chip .unit-plain,
+.unit-link,
+.unit-plain{
+  white-space: normal !important;
+  width: auto !important;
+  max-width: none !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+}
