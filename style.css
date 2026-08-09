@@ -116,3 +116,23 @@ footer{padding:32px clamp(20px,7vw,110px);display:flex;justify-content:space-bet
   padding:12px;
   border:1px dashed #bbb;
 }
+
+
+/* v11: 長いチーム名・ユニット名を省略せず全文表示 */
+.stage-entry,
+.stage-entry *,
+.stage-units,
+.stage-units *,
+.unit-name,
+.team-name,
+.result-card,
+.result-card * {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  max-height: none !important;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
