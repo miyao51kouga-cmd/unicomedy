@@ -272,7 +272,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（1日目香盤表）",
+        "title": "準決勝1日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -582,7 +582,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（2日目香盤表）",
+        "title": "準決勝2日目 香盤表",
         "note": "NOROSHI2026 準決勝2日目の香盤表（添付画像）より。",
         "entries": [
           [
@@ -892,7 +892,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（3日目香盤表）",
+        "title": "準決勝3日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -1964,7 +1964,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（1日目香盤表）",
+        "title": "準決勝1日目 香盤表",
         "entries": [
           [
             "1",
@@ -2311,7 +2311,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（2日目香盤表）",
+        "title": "準決勝2日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -2659,7 +2659,7 @@ const DATA = [
         ]
       },
       {
-        "title": "敗者復活戦進出チーム（2日目香盤表）",
+        "title": "敗者復活戦2日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -2950,7 +2950,7 @@ const DATA = [
         ]
       },
       {
-        "title": "敗者復活戦進出チーム（1日目香盤表）",
+        "title": "敗者復活戦1日目 香盤表",
         "entries": [
           [
             "1",
@@ -3944,7 +3944,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（1日目香盤表）",
+        "title": "準決勝1日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -4254,7 +4254,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（2日目香盤表）",
+        "title": "準決勝2日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -4784,7 +4784,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝 → 決勝進出",
+        "title": "決勝進出チーム（準決勝結果）",
         "note": "",
         "entries": [
           [
@@ -5618,7 +5618,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（1日目香盤表）",
+        "title": "準決勝1日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -5890,7 +5890,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（2日目香盤表）",
+        "title": "準決勝2日目 香盤表",
         "entries": [
           [
             "1",
@@ -6243,7 +6243,7 @@ const DATA = [
         ]
       },
       {
-        "title": "敗者復活戦進出チーム（香盤表）",
+        "title": "敗者復活戦 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -7072,7 +7072,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（1日目香盤表）",
+        "title": "準決勝1日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -7344,7 +7344,7 @@ const DATA = [
         ]
       },
       {
-        "title": "準決勝進出チーム（2日目香盤表）",
+        "title": "準決勝2日目 香盤表",
         "note": "送付いただいた香盤表をもとに追加。",
         "entries": [
           [
@@ -9145,7 +9145,7 @@ const DATA = [
     ],
     "stages": [
       {
-        "title": "準決勝 → 決勝進出8チーム",
+        "title": "決勝進出チーム（準決勝結果）",
         "note": "",
         "entries": [
           [
@@ -10336,21 +10336,41 @@ const unitDialogContent = document.querySelector("#unitDialogContent");
 
 // Stage strength: same event/year appearing in semifinal and final should resolve to the furthest stage only.
 function stageScore(title=""){
+  // 到達した最終ラウンドを返す。
+  // 「準決勝」の中にも「決勝」という文字が含まれるため、
+  // 文字列の単純一致ではなく意味ごとに判定する。
+
+  // 決勝そのもの（決勝結果・決勝香盤・決勝進出者など）
   if(title.includes("決勝結果")) return 4;
-  if(title.includes("準決勝") && title.includes("→") && title.includes("決勝進出")) return 4;
-  if(title.includes("決勝進出者") || title.includes("決勝進出8") || title.includes("決勝進出9")) return 4;
+  if(title.includes("決勝戦")) return 4;
+  if(title.startsWith("決勝")) return 4;
+
+  // 準決勝から決勝へ勝ち上がった一覧
+  if(title.includes("準決勝") && title.includes("決勝進出")) return 4;
+
+  // 敗者復活戦から準決勝へ勝ち上がった一覧
+  if(title.startsWith("敗者復活") && title.includes("準決勝進出")) return 3;
+
+  // 予選から準決勝へ勝ち上がった一覧
+  if(title.startsWith("予選") && title.includes("準決勝進出")) return 3;
+
+  // 準決勝そのもの
   if(title.includes("準決勝")) return 3;
+
+  // 敗者復活戦
   if(title.includes("敗者復活")) return 2;
+
+  // 予選
   if(title.includes("予選")) return 1;
+
   return 0;
 }
 function stageLabel(title=""){
-  if(title.includes("決勝結果")) return "決勝";
-  if(title.includes("準決勝") && title.includes("→") && title.includes("決勝進出")) return "決勝";
-  if(title.includes("決勝進出者") || title.includes("決勝進出8") || title.includes("決勝進出9")) return "決勝";
-  if(title.includes("準決勝")) return "準決勝";
-  if(title.includes("敗者復活")) return "敗者復活戦";
-  if(title.includes("予選")) return "予選";
+  const score=stageScore(title);
+  if(score===4) return "決勝";
+  if(score===3) return "準決勝";
+  if(score===2) return "敗者復活戦";
+  if(score===1) return "予選";
   return title || "出場";
 }
 
@@ -10496,37 +10516,57 @@ function cameFromRevival(d, teamName){
 // 2. 準決勝
 // 3. 敗者復活戦
 // 4. 予選・その他
+function stageDay(title=""){
+  const m=title.match(/(\d+)日目/);
+  return m ? Number(m[1]) : 0;
+}
+
+// 表示順を全大会で統一。
+// 0: 決勝結果
+// 1: 決勝戦香盤 / 決勝進出一覧
+// 2: 準決勝1日目, 2日目, 3日目...
+// 3: 敗者復活戦1日目, 2日目...
+// 4: 予選
+// 5: その他
 function detailStageOrder(title=""){
-  // まず決勝
+  // 「どこへ進んだか」ではなく「何の一覧か / どのラウンドか」を優先して分類。
+
+  // 1. 決勝
   if(title.includes("決勝結果")) return 0;
-  if(title.includes("決勝進出者") || title.includes("決勝進出8") || title.includes("決勝進出9")) return 1;
+  if(title.includes("決勝戦")) return 100;
+  if(title.startsWith("決勝")) return 110;
 
-  // 「準決勝 → 決勝進出」は準決勝の結果として、準決勝グループの先頭へ
-  if(title.includes("準決勝") && title.includes("決勝進出")) return 10;
+  // 2. 準決勝1日目 → 2日目 → 3日目...
+  if(title.startsWith("準決勝")){
+    const day=stageDay(title);
+    return 200 + (day || 50);
+  }
 
-  // 次に準決勝
-  if(title.includes("準決勝")) return 11;
+  // 3. 敗者復活戦1日目 → 2日目...
+  if(title.startsWith("敗者復活")){
+    const day=stageDay(title);
+    return 300 + (day || 50);
+  }
 
-  // 次に敗者復活戦
-  if(title.includes("敗者復活")) return 20;
+  // 4. 予選
+  // 「予選 → 敗者復活戦進出」も、行われたラウンドは予選なのでここ。
+  if(title.startsWith("予選")){
+    const day=stageDay(title);
+    return 400 + (day || 50);
+  }
 
-  // 最後に予選
-  if(title.includes("予選")) return 30;
-  return 40;
+  // 表記揺れの保険
+  if(title.includes("準決勝")) return 250;
+  if(title.includes("敗者復活")) return 350;
+  if(title.includes("予選")) return 450;
+
+  return 500;
 }
 function orderedStages(d){
   return [...(d.stages||[])].sort((a,b)=>{
     const oa=detailStageOrder(a.title), ob=detailStageOrder(b.title);
     if(oa!==ob) return oa-ob;
-
-    // 同カテゴリ内は、結果・進出確定を先に、その後に香盤表
-    const resultA = /決勝結果|→|決勝進出/.test(a.title) ? 0 : 1;
-    const resultB = /決勝結果|→|決勝進出/.test(b.title) ? 0 : 1;
-    if(resultA!==resultB) return resultA-resultB;
-
-    const da = Number((a.title.match(/(\d+)日目/)||[])[1]||99);
-    const db = Number((b.title.match(/(\d+)日目/)||[])[1]||99);
-    return da-db;
+    return a.title.localeCompare(b.title,"ja");
   });
 }
 
