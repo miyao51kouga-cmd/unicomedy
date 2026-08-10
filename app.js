@@ -11653,7 +11653,7 @@ const unitDialogContent = document.querySelector("#unitDialogContent");
 
 // 同一年内の表示順をここで一元管理。
 // 上から：大学芸会 → 学生R-1 → 学生お笑い新人戦 → NOROSHI → 旧団体戦
-const EVENT_DISPLAY_ORDER={individual:0,r1:1,newcomer:2,noroshi:3,"old-team":4};
+const EVENT_DISPLAY_ORDER={noroshi:0,newcomer:1,individual:2,r1:3,"old-team":4};
 function sortEventsForDisplay(items){
   return [...items].sort((a,b)=>{
     if(b.year!==a.year) return b.year-a.year;

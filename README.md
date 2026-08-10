@@ -153,3 +153,13 @@ NOROSHI → 学生お笑い新人戦 → 大学芸会 → 学生R-1
 → 2024 NOROSHI → 2024 新人戦 → 2024 大学芸会 → 2024 学生R-1
 
 DATA本体と表示用ソート関数の両方を同じ規則に統一。
+
+## v32 — actual display sorter fixed
+v31ではDATAとdisplayEventsは正しかったが、実際の一覧描画直前に
+sortEventsForDisplay() が EVENT_DISPLAY_ORDER を使って再ソートしていた。
+その定数が古い順番のままだったため画面では直っていなかった。
+
+EVENT_DISPLAY_ORDER を以下へ修正:
+NOROSHI → 学生お笑い新人戦 → 大学芸会 → 学生R-1
+
+2022〜2025について、実際の sortEventsForDisplay と同じロジックで検証済み。
