@@ -11102,7 +11102,7 @@ function card(d){
   return `<article class="latest-card" data-event="${d.year}-${d.type}" data-clickable="true"
     style="--accent:${accent};background:linear-gradient(145deg,${accent} 0 17%,#fff 17%);border-top:7px solid ${accent}">
     <span class="badge badge-on-accent">${d.year} / ${typeName(d.type)}</span>
-    <h3>${d.winner}</h3><p class="school">${d.school}</p>
+    <h3>${d.type==="newcomer" ? unitLink(d.winner) : d.winner}</h3><p class="school">${d.school}</p>
     ${unitsHTML(d.teamUnits||[])}
     <div class="placements">
       <span><b>準優勝</b>${d.runnerUp}</span>
@@ -11144,7 +11144,7 @@ function render(){
     const accent=colorForSchool(d.school);
     return `<article class="result-row" data-event="${d.year}-${d.type}" style="--row-accent:${accent}">
       <div class="year">${d.year}</div><div class="type">${typeName(d.type)}</div>
-      <div class="winner"><b><span class="winner-dot"></span>${d.winner}</b><small>${d.school}</small>${unitsHTML(d.teamUnits||[])}</div>
+      <div class="winner"><b><span class="winner-dot"></span>${d.type==="newcomer" ? unitLink(d.winner) : d.winner}</b><small>${d.school}</small>${unitsHTML(d.teamUnits||[])}</div>
       <div class="awards">準優勝：${d.runnerUp}<br>3位：${d.third}<br>${d.type==="newcomer" ? `4位：${d.fourth||"—"}` : `審査員賞：${d.judge}`}</div>
     </article>`;
   }).join("");
@@ -11245,8 +11245,8 @@ function stageHTML(stage,d){
         const [rank,name,school,rawUnits=[]]=e;
         const units=resolvedUnitsForTeam(d,name,rawUnits);
 
-        // 個人戦はユニット自体を履歴リンクにする。
-        const displayName=d.type==="individual" ? unitLink(name) : `<b>${name}</b>`;
+        // 個人戦・新人戦はユニット自体を履歴リンクにする。
+        const displayName=(d.type==="individual" || d.type==="newcomer") ? unitLink(name) : `<b>${name}</b>`;
 
         // 敗者復活戦から勝ち上がって準決勝・決勝にいる場合だけ表示。
         const currentScore=stageScore(stage.title);
