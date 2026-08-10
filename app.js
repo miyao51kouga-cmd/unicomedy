@@ -11637,6 +11637,16 @@ const unitDialogContent = document.querySelector("#unitDialogContent");
   const o=document.createElement("option"); o.value=y; o.textContent=`${y}年`; yearFilter.appendChild(o);
 });
 
+// 同一年内の表示順をここで一元管理。
+// 上から：大学芸会 → 学生R-1 → 学生お笑い新人戦 → NOROSHI → 旧団体戦
+const EVENT_DISPLAY_ORDER={individual:0,r1:1,newcomer:2,noroshi:3,"old-team":4};
+function sortEventsForDisplay(items){
+  return [...items].sort((a,b)=>{
+    if(b.year!==a.year) return b.year-a.year;
+    return (EVENT_DISPLAY_ORDER[a.type]??99)-(EVENT_DISPLAY_ORDER[b.type]??99);
+  });
+}
+
 // Stage strength: same event/year appearing in semifinal and final should resolve to the furthest stage only.
 function stageScore(title=""){
   // 到達ラウンド判定。
@@ -11752,12 +11762,8 @@ function card(d){
   </article>`;
 }
 
-// Newest event overall. Within same year, individual is later in the calendar than NOROSHI.
-// 最新結果も大会一覧と同じ順番に統一：大学芸会 → 学生R-1 → 新人戦 → NOROSHI
-const latestEventOrder={individual:0,r1:1,newcomer:2,"old-team":3,noroshi:4};
-const latest = [...DATA].filter(d=>d.winner!=="開催中止")
-  .sort((a,b)=>b.year-a.year || (latestEventOrder[a.type]??9)-(latestEventOrder[b.type]??9))
-  .slice(0,3);
+// 最新結果も同じ表示順を強制
+const latest = sortEventsForDisplay(DATA.filter(d=>d.winner!=="開催中止")).slice(0,3);
 document.querySelector("#latestCards").innerHTML = latest.map(card).join("");
 
 const newest=latest[0];
@@ -11777,12 +11783,11 @@ function searchBlob(d){
 function render(){
   const q=search.value.trim().toLowerCase();
   const t=typeFilter.value, y=yearFilter.value;
-  const eventOrder={individual:0,r1:1,newcomer:2,"old-team":3,noroshi:4};
-  const filtered=DATA.filter(d=>
+  const filtered=sortEventsForDisplay(DATA.filter(d=>
     (!q||searchBlob(d).includes(q)) &&
     (t==="all"||d.type===t) &&
     (y==="all"||String(d.year)===y)
-  ).sort((a,b)=>b.year-a.year || (eventOrder[a.type]??9)-(eventOrder[b.type]??9));
+  ));
   document.querySelector("#resultList").innerHTML=filtered.map(d=>{
     const accent=colorForSchool(d.school);
     return `<article class="result-row" data-event="${d.year}-${d.type}" style="--row-accent:${accent}">
