@@ -11623,11 +11623,11 @@ const CIRCLE_COLORS = [
 
 
 function displayEvents(items){
-  // User-specified TOP-to-BOTTOM order for each year:
-  // NOROSHI -> 学生お笑い新人戦 -> 大学芸会 -> 学生R-1
-  const order={noroshi:0,newcomer:1,individual:2,"old-team":2,r1:3};
+  // Site display: newest first.
+  // Within the same year: 学生R-1 → 大学芸会 → 新人戦 → NOROSHI
+  const order={r1:0,individual:1,"old-team":1,newcomer:2,noroshi:3};
   return [...items].sort((a,b)=>{
-    const yd=(Number(a.year)||0)-(Number(b.year)||0);
+    const yd=(Number(b.year)||0)-(Number(a.year)||0);
     if(yd!==0) return yd;
     return (order[a.type]??9)-(order[b.type]??9);
   });
@@ -11651,12 +11651,12 @@ const unitDialogContent = document.querySelector("#unitDialogContent");
   const o=document.createElement("option"); o.value=y; o.textContent=`${y}年`; yearFilter.appendChild(o);
 });
 
-// 大会結果一覧は古い年度から新しい年度へ。
-// 同一年は上から：NOROSHI → 学生お笑い新人戦 → 大学芸会 → 学生R-1 → 旧団体戦
-const EVENT_DISPLAY_ORDER={noroshi:0,newcomer:1,individual:2,r1:3,"old-team":4};
+// 大会結果一覧は新しい年度から古い年度へ。
+// 同一年は上から：学生R-1 → 大学芸会 → 学生お笑い新人戦 → NOROSHI → 旧団体戦
+const EVENT_DISPLAY_ORDER={r1:0,individual:1,newcomer:2,noroshi:3,"old-team":4};
 function sortEventsForDisplay(items){
   return [...items].sort((a,b)=>{
-    if(b.year!==a.year) return a.year-b.year;
+    if(b.year!==a.year) return b.year-a.year;
     return (EVENT_DISPLAY_ORDER[a.type]??99)-(EVENT_DISPLAY_ORDER[b.type]??99);
   });
 }

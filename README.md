@@ -163,3 +163,15 @@ EVENT_DISPLAY_ORDER を以下へ修正:
 NOROSHI → 学生お笑い新人戦 → 大学芸会 → 学生R-1
 
 2022〜2025について、実際の sortEventsForDisplay と同じロジックで検証済み。
+
+## v34 — newest-first display corrected
+
+実際の時系列（古い→新しい）:
+NOROSHI → 新人戦 → 大学芸会 → 学生R-1
+
+サイトは新しいものを上に表示するため、同一年では逆順:
+学生R-1 → 大学芸会 → 新人戦 → NOROSHI
+
+年度自体も新しい年から古い年へ表示。
+実際の画面で使われる displayEvents() と sortEventsForDisplay() の両方を同じ規則に修正し、
+2022〜2025をコード上で再検証済み。
