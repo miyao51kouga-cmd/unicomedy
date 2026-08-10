@@ -162,3 +162,8 @@ footer{padding:32px clamp(20px,7vw,110px);display:flex;justify-content:space-bet
   word-break: break-word !important;
   overflow-wrap: anywhere !important;
 }
+
+/* v20: 歴代優勝者を NOROSHI → 新人戦 → 大学芸会 の3列で表示 */
+@media(min-width:821px){
+  .champion-columns{grid-template-columns:repeat(3,minmax(0,1fr));gap:38px}
+}
