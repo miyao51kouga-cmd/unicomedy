@@ -11753,7 +11753,11 @@ function card(d){
 }
 
 // Newest event overall. Within same year, individual is later in the calendar than NOROSHI.
-const latest = DATA.filter(d=>d.winner!=="開催中止").slice(0,3);
+// 最新結果も大会一覧と同じ順番に統一：大学芸会 → 学生R-1 → 新人戦 → NOROSHI
+const latestEventOrder={individual:0,r1:1,newcomer:2,"old-team":3,noroshi:4};
+const latest = [...DATA].filter(d=>d.winner!=="開催中止")
+  .sort((a,b)=>b.year-a.year || (latestEventOrder[a.type]??9)-(latestEventOrder[b.type]??9))
+  .slice(0,3);
 document.querySelector("#latestCards").innerHTML = latest.map(card).join("");
 
 const newest=latest[0];
