@@ -1,5 +1,643 @@
 const DATA = [
   {
+    "year": 2025,
+    "type": "r1",
+    "event": "学生R-1 2025",
+    "winner": "やっさん",
+    "school": "大和大学お笑いサークルLOVE&PASSION",
+    "runnerUp": "西っち14",
+    "runnerSchool": "近畿大学お笑いサークルこども帝国",
+    "third": "ハマ・オカモト太郎",
+    "thirdSchool": "大阪大学お笑いサークルO2S2",
+    "judge": "—",
+    "judgeSchool": "",
+    "stages": [
+      {
+        "title": "決勝結果",
+        "note": "ユーザー提供の決勝結果をもとに追加。",
+        "entries": [
+          [
+            "優勝",
+            "やっさん",
+            "大和大学お笑いサークルLOVE&PASSION"
+          ],
+          [
+            "準優勝",
+            "西っち14",
+            "近畿大学お笑いサークルこども帝国"
+          ],
+          [
+            "3位",
+            "ハマ・オカモト太郎",
+            "大阪大学お笑いサークルO2S2"
+          ]
+        ]
+      },
+      {
+        "title": "決勝戦 香盤",
+        "note": "ユーザー提供の決勝香盤画像をもとに追加。所属が画像で確認できない出演者は空欄。",
+        "entries": [
+          [
+            "1",
+            "小岩井大解散",
+            "早稲田大学お笑い集団POP3"
+          ],
+          [
+            "2",
+            "キャプテン",
+            ""
+          ],
+          [
+            "3",
+            "ナカヤ",
+            "筑波大学お笑い集団DONPAPA"
+          ],
+          [
+            "4",
+            "ナスカ",
+            "名古屋大学落語研究会"
+          ],
+          [
+            "5",
+            "ハマ・オカモト太郎",
+            "大阪大学お笑いサークルO2S2"
+          ],
+          [
+            "6",
+            "ピエール滝登り",
+            "中央大学お笑いサークルCOP"
+          ],
+          [
+            "7",
+            "lil高山",
+            "関西学院大学お笑いサークルTHEATER"
+          ],
+          [
+            "8",
+            "ユーユュー",
+            "一橋大学お笑いサークルIOK"
+          ],
+          [
+            "9",
+            "チーズぼうや",
+            "日本大学経商法落語研究会"
+          ],
+          [
+            "10",
+            "西っち14",
+            "近畿大学お笑いサークルこども帝国"
+          ],
+          [
+            "11",
+            "ハマダ2",
+            "近畿大学お笑いサークルこども帝国"
+          ],
+          [
+            "12",
+            "桃ピン",
+            "慶應義塾大学お笑い道場O-keis"
+          ],
+          [
+            "13",
+            "やっさん",
+            "大和大学お笑いサークルLOVE&PASSION"
+          ],
+          [
+            "14",
+            "おまもりポーチ",
+            "横浜国立大学お笑いサークルわかば"
+          ],
+          [
+            "15",
+            "ひでまろブラウン",
+            "慶應義塾大学お笑い道場O-keis"
+          ],
+          [
+            "16",
+            "町田",
+            "中央大学お笑いサークルCOP"
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      [
+        "学生R-1公式X（予選結果・香盤）",
+        "https://x.com/gakuseir1"
+      ]
+    ]
+  },
+  {
+    "year": 2024,
+    "type": "r1",
+    "event": "学生R-1 2024",
+    "winner": "吟遊詩人",
+    "school": "早稲田大学お笑い工房LUDO",
+    "runnerUp": "カラスみず",
+    "runnerSchool": "日本大学経商法落語研究会",
+    "third": "じゃぼ",
+    "thirdSchool": "名古屋大学落語研究会",
+    "judge": "—",
+    "judgeSchool": "",
+    "stages": [
+      {
+        "title": "決勝結果",
+        "note": "ユーザー提供の決勝結果をもとに追加。",
+        "entries": [
+          [
+            "優勝",
+            "吟遊詩人",
+            "早稲田大学お笑い工房LUDO"
+          ],
+          [
+            "準優勝",
+            "カラスみず",
+            "日本大学経商法落語研究会"
+          ],
+          [
+            "3位",
+            "じゃぼ",
+            "名古屋大学落語研究会"
+          ]
+        ]
+      },
+      {
+        "title": "決勝戦 香盤",
+        "note": "ユーザー提供の決勝香盤画像をもとに追加。所属が画像で確認できない出演者は空欄。",
+        "entries": [
+          [
+            "1",
+            "レベッカ牛建",
+            "法政大学お笑いサークルHOS"
+          ],
+          [
+            "2",
+            "久蘭々",
+            "上智大学お笑いサークルSCS"
+          ],
+          [
+            "3",
+            "鹿島",
+            "一橋大学お笑いサークルIOK"
+          ],
+          [
+            "4",
+            "チーズぼうや",
+            "日本大学経商法落語研究会"
+          ],
+          [
+            "5",
+            "カラスみず",
+            "日本大学経商法落語研究会"
+          ],
+          [
+            "6",
+            "ニワカ極みJINGO。",
+            "東京学芸大学お笑いサークルGOC"
+          ],
+          [
+            "7",
+            "知育",
+            ""
+          ],
+          [
+            "8",
+            "じゃぼ",
+            "名古屋大学落語研究会"
+          ],
+          [
+            "9",
+            "吟遊詩人",
+            "早稲田大学お笑い工房LUDO"
+          ],
+          [
+            "10",
+            "Greatest Showman",
+            "立教大学お笑いサークルパラダイスポート"
+          ],
+          [
+            "11",
+            "こぐちんゆー",
+            "一橋大学お笑いサークルIOK"
+          ],
+          [
+            "12",
+            "泥まみれ堀部",
+            "東京大学落語研究会"
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      [
+        "学生R-1公式X（予選結果・香盤）",
+        "https://x.com/gakuseir1"
+      ]
+    ]
+  },
+  {
+    "year": 2023,
+    "type": "r1",
+    "event": "学生R-1 2023",
+    "winner": "小林空",
+    "school": "明治大学お笑いサークル木曜会Z",
+    "runnerUp": "半谷守備職人",
+    "runnerSchool": "慶應義塾大学お笑い道場O-keis",
+    "third": "島田一円玉",
+    "thirdSchool": "慶應義塾大学お笑い道場O-keis",
+    "judge": "—",
+    "judgeSchool": "",
+    "stages": [
+      {
+        "title": "決勝結果",
+        "note": "ユーザー提供の決勝結果をもとに追加。",
+        "entries": [
+          [
+            "優勝",
+            "小林空",
+            "明治大学お笑いサークル木曜会Z"
+          ],
+          [
+            "準優勝",
+            "半谷守備職人",
+            "慶應義塾大学お笑い道場O-keis"
+          ],
+          [
+            "3位",
+            "島田一円玉",
+            "慶應義塾大学お笑い道場O-keis"
+          ]
+        ]
+      },
+      {
+        "title": "決勝戦 香盤",
+        "note": "ユーザー提供の決勝香盤画像をもとに追加。所属が画像で確認できない出演者は空欄。",
+        "entries": [
+          [
+            "1",
+            "シンモリヤ",
+            "駒澤大学お笑い集団ナイフとフォーク"
+          ],
+          [
+            "2",
+            "伊東大成功",
+            "法政大学お笑いサークルHOS"
+          ],
+          [
+            "3",
+            "ぺも仲村",
+            "静岡大学お笑いサークルザブトン"
+          ],
+          [
+            "4",
+            "半谷守備職人",
+            "慶應義塾大学お笑い道場O-keis"
+          ],
+          [
+            "5",
+            "島田一円玉",
+            "慶應義塾大学お笑い道場O-keis"
+          ],
+          [
+            "6",
+            "松枝七味",
+            "慶應義塾大学お笑い道場O-keis"
+          ],
+          [
+            "7",
+            "吟遊詩人",
+            "早稲田大学お笑い工房LUDO"
+          ],
+          [
+            "8",
+            "ユクトモ",
+            "東洋大学落語研究会"
+          ],
+          [
+            "9",
+            "友田オレ",
+            "早稲田大学お笑い工房LUDO"
+          ],
+          [
+            "10",
+            "細野マシマシ",
+            "一橋大学お笑いサークルIOK"
+          ],
+          [
+            "11",
+            "モノゾ",
+            "名古屋大学落語研究会"
+          ],
+          [
+            "12",
+            "小林空",
+            "明治大学お笑いサークル木曜会Z"
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      [
+        "学生R-1公式X（予選結果・香盤）",
+        "https://x.com/gakuseir1"
+      ]
+    ]
+  },
+  {
+    "year": 2022,
+    "type": "r1",
+    "event": "学生R-1 2022",
+    "winner": "魁！グッドラック善子",
+    "school": "千葉大学お笑いサークルP-RITTS",
+    "runnerUp": "おくばやし",
+    "runnerSchool": "千葉大学お笑いサークルP-RITTS",
+    "third": "月は東に陽は西に",
+    "thirdSchool": "",
+    "judge": "—",
+    "judgeSchool": "",
+    "stages": [
+      {
+        "title": "決勝結果",
+        "note": "ユーザー提供の決勝結果をもとに追加。",
+        "entries": [
+          [
+            "優勝",
+            "魁！グッドラック善子",
+            "千葉大学お笑いサークルP-RITTS"
+          ],
+          [
+            "準優勝",
+            "おくばやし",
+            "千葉大学お笑いサークルP-RITTS"
+          ],
+          [
+            "3位",
+            "月は東に陽は西に",
+            ""
+          ]
+        ]
+      },
+      {
+        "title": "決勝戦 香盤",
+        "note": "ユーザー提供の決勝香盤画像をもとに追加。所属が画像で確認できない出演者は空欄。",
+        "entries": [
+          [
+            "1",
+            "フナツ",
+            "早稲田大学お笑い工房LUDO"
+          ],
+          [
+            "2",
+            "安心でいいね、福原愛はパナソニック",
+            "東京学芸大学お笑いサークルGOC"
+          ],
+          [
+            "3",
+            "音響使わないマン",
+            ""
+          ],
+          [
+            "4",
+            "みとけん",
+            "横浜国立大学お笑いサークルわかば"
+          ],
+          [
+            "5",
+            "おくばやし",
+            "千葉大学お笑いサークルP-RITTS"
+          ],
+          [
+            "6",
+            "月は東に陽は西に",
+            ""
+          ],
+          [
+            "7",
+            "村田ラコステサーベルタイガー",
+            "日本大学経商法落語研究会"
+          ],
+          [
+            "8",
+            "魁！グッドラック善子",
+            "千葉大学お笑いサークルP-RITTS"
+          ],
+          [
+            "9",
+            "ワイン",
+            "一橋大学お笑いサークルIOK"
+          ],
+          [
+            "10",
+            "布ちゃん",
+            "上智大学お笑いサークルSCS"
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      [
+        "学生R-1公式X（予選結果・香盤）",
+        "https://x.com/gakuseir1"
+      ]
+    ]
+  },
+  {
+    "year": 2021,
+    "type": "r1",
+    "event": "学生R-1 2021",
+    "winner": "福島ブナン",
+    "school": "日本大学経商法落語研究会",
+    "runnerUp": "清水駿平",
+    "runnerSchool": "明治大学お笑いサークル木曜会Z",
+    "third": "みとけん",
+    "thirdSchool": "横浜国立大学お笑いサークルわかば",
+    "judge": "—",
+    "judgeSchool": "",
+    "stages": [
+      {
+        "title": "決勝結果",
+        "note": "ユーザー提供の決勝結果をもとに追加。",
+        "entries": [
+          [
+            "優勝",
+            "福島ブナン",
+            "日本大学経商法落語研究会"
+          ],
+          [
+            "準優勝",
+            "清水駿平",
+            "明治大学お笑いサークル木曜会Z"
+          ],
+          [
+            "3位",
+            "みとけん",
+            "横浜国立大学お笑いサークルわかば"
+          ]
+        ]
+      },
+      {
+        "title": "決勝戦 香盤",
+        "note": "ユーザー提供の決勝香盤画像をもとに追加。所属が画像で確認できない出演者は空欄。",
+        "entries": [
+          [
+            "1",
+            "あの時の牛乳",
+            "法政大学お笑いサークルHOS"
+          ],
+          [
+            "2",
+            "福島ブナン",
+            "日本大学経商法落語研究会"
+          ],
+          [
+            "3",
+            "月は東に陽は西に",
+            ""
+          ],
+          [
+            "4",
+            "ビバ☆TAIKI",
+            ""
+          ],
+          [
+            "5",
+            "フォルマッジ大西",
+            "千葉大学お笑いサークルP-RITTS"
+          ],
+          [
+            "6",
+            "みとけん",
+            "横浜国立大学お笑いサークルわかば"
+          ],
+          [
+            "7",
+            "ワイン",
+            "一橋大学お笑いサークルIOK"
+          ],
+          [
+            "8",
+            "ルカキクチ",
+            "法政大学お笑いサークルHOS"
+          ],
+          [
+            "9",
+            "すみだ水族館 おくばやし",
+            "千葉大学お笑いサークルP-RITTS"
+          ],
+          [
+            "10",
+            "清水駿平",
+            "明治大学お笑いサークル木曜会Z"
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      [
+        "学生R-1公式X（予選結果・香盤）",
+        "https://x.com/gakuseir1"
+      ]
+    ]
+  },
+  {
+    "year": 2020,
+    "type": "r1",
+    "event": "学生R-1 2020",
+    "winner": "葱仮面",
+    "school": "中央大学落語研究会",
+    "runnerUp": "元祖オレ木村",
+    "runnerSchool": "一橋大学お笑いサークルIOK",
+    "third": "ムラハシ",
+    "thirdSchool": "創価大学落語研究会",
+    "judge": "—",
+    "judgeSchool": "",
+    "stages": [
+      {
+        "title": "決勝結果",
+        "note": "ユーザー提供の決勝結果をもとに追加。",
+        "entries": [
+          [
+            "優勝",
+            "葱仮面",
+            "中央大学落語研究会"
+          ],
+          [
+            "準優勝",
+            "元祖オレ木村",
+            "一橋大学お笑いサークルIOK"
+          ],
+          [
+            "3位",
+            "ムラハシ",
+            "創価大学落語研究会"
+          ]
+        ]
+      },
+      {
+        "title": "決勝戦 香盤",
+        "note": "ユーザー提供の決勝香盤画像をもとに追加。所属が画像で確認できない出演者は空欄。",
+        "entries": [
+          [
+            "1",
+            "ok32シャンパンボーイ",
+            "創価大学落語研究会"
+          ],
+          [
+            "2",
+            "えだまめ",
+            "創価大学落語研究会"
+          ],
+          [
+            "3",
+            "ムラハシ",
+            "創価大学落語研究会"
+          ],
+          [
+            "4",
+            "葱仮面",
+            "中央大学落語研究会"
+          ],
+          [
+            "5",
+            "ぼくはハシモト",
+            "創価大学落語研究会"
+          ],
+          [
+            "6",
+            "あゆみの一歩",
+            "同志社大学喜劇研究会"
+          ],
+          [
+            "7",
+            "くぼてぃら",
+            "法政大学お笑いサークルHOS"
+          ],
+          [
+            "8",
+            "三上でんきタイプ",
+            "慶應義塾大学お笑い道場O-keis"
+          ],
+          [
+            "9",
+            "おくば",
+            "千葉大学お笑いサークルP-RITTS"
+          ],
+          [
+            "10",
+            "元祖オレ木村",
+            "一橋大学お笑いサークルIOK"
+          ]
+        ]
+      }
+    ],
+    "sources": [
+      [
+        "学生R-1公式X（予選結果・香盤）",
+        "https://x.com/gakuseir1"
+      ]
+    ]
+  },
+  {
     "year": 2026,
     "type": "newcomer",
     "event": "学生お笑い新人戦 2026",
@@ -10986,7 +11624,7 @@ function colorForSchool(s=""){
   return hit ? hit[1] : "#6e6e6e";
 }
 
-const typeName = t => t==="individual" ? "大学芸会 個人戦" : t==="noroshi" ? "NOROSHI" : t==="newcomer" ? "学生お笑い新人戦" : "旧・大学芸会 団体戦";
+const typeName = t => t==="individual" ? "大学芸会 個人戦" : t==="noroshi" ? "NOROSHI" : t==="newcomer" ? "学生お笑い新人戦" : t==="r1" ? "学生R-1" : "旧・大学芸会 団体戦";
 const search = document.querySelector("#search");
 const typeFilter = document.querySelector("#typeFilter");
 const yearFilter = document.querySelector("#yearFilter");
@@ -11057,7 +11695,7 @@ DATA.forEach(d=>{
     (s.entries||[]).forEach(e=>{
       const [rank,name,school,units=[]]=e;
       // Individual-event entries are units themselves.
-      if(d.type==="individual" || d.type==="newcomer"){
+      if(d.type==="individual" || d.type==="newcomer" || d.type==="r1"){
         pushOccurrence(name,{eventKey,year:d.year,type:d.type,event:d.event,stage:stageLabel(s.title),score:stageScore(s.title),rank,school});
       }
       // NOROSHI: index the three component units.
@@ -11102,7 +11740,7 @@ function card(d){
   return `<article class="latest-card" data-event="${d.year}-${d.type}" data-clickable="true"
     style="--accent:${accent};background:linear-gradient(145deg,${accent} 0 17%,#fff 17%);border-top:7px solid ${accent}">
     <span class="badge badge-on-accent">${d.year} / ${typeName(d.type)}</span>
-    <h3>${d.type==="newcomer" ? unitLink(d.winner) : d.winner}</h3><p class="school">${d.school}</p>
+    <h3>${(d.type==="newcomer" || d.type==="r1") ? unitLink(d.winner) : d.winner}</h3><p class="school">${d.school}</p>
     ${unitsHTML(d.teamUnits||[])}
     <div class="placements">
       <span><b>準優勝</b>${d.runnerUp}</span>
@@ -11135,17 +11773,18 @@ function searchBlob(d){
 function render(){
   const q=search.value.trim().toLowerCase();
   const t=typeFilter.value, y=yearFilter.value;
+  const eventOrder={individual:0,r1:1,newcomer:2,"old-team":3,noroshi:4};
   const filtered=DATA.filter(d=>
     (!q||searchBlob(d).includes(q)) &&
     (t==="all"||d.type===t) &&
     (y==="all"||String(d.year)===y)
-  );
+  ).sort((a,b)=>b.year-a.year || (eventOrder[a.type]??9)-(eventOrder[b.type]??9));
   document.querySelector("#resultList").innerHTML=filtered.map(d=>{
     const accent=colorForSchool(d.school);
     return `<article class="result-row" data-event="${d.year}-${d.type}" style="--row-accent:${accent}">
       <div class="year">${d.year}</div><div class="type">${typeName(d.type)}</div>
-      <div class="winner"><b><span class="winner-dot"></span>${d.type==="newcomer" ? unitLink(d.winner) : d.winner}</b><small>${d.school}</small>${unitsHTML(d.teamUnits||[])}</div>
-      <div class="awards">準優勝：${d.runnerUp}<br>3位：${d.third}<br>${d.type==="newcomer" ? `4位：${d.fourth||"—"}` : `審査員賞：${d.judge}`}</div>
+      <div class="winner"><b><span class="winner-dot"></span>${(d.type==="newcomer" || d.type==="r1") ? unitLink(d.winner) : d.winner}</b><small>${d.school}</small>${unitsHTML(d.teamUnits||[])}</div>
+      <div class="awards">準優勝：${d.runnerUp}<br>3位：${d.third}<br>${d.type==="newcomer" ? `4位：${d.fourth||"—"}` : d.type==="r1" ? `` : `審査員賞：${d.judge}`}</div>
     </article>`;
   }).join("");
   document.querySelector("#empty").hidden=filtered.length!==0;
@@ -11246,7 +11885,7 @@ function stageHTML(stage,d){
         const units=resolvedUnitsForTeam(d,name,rawUnits);
 
         // 個人戦・新人戦はユニット自体を履歴リンクにする。
-        const displayName=(d.type==="individual" || d.type==="newcomer") ? unitLink(name) : `<b>${name}</b>`;
+        const displayName=(d.type==="individual" || d.type==="newcomer" || d.type==="r1") ? unitLink(name) : `<b>${name}</b>`;
 
         // 敗者復活戦から勝ち上がって準決勝・決勝にいる場合だけ表示。
         const currentScore=stageScore(stage.title);
@@ -11343,6 +11982,7 @@ function timeline(type){
 // NOROSHI is held earlier in the same year, so in the champions area it is shown second
 // when reading the year chronologically from later event to earlier event.
 document.querySelector("#individualChampions").innerHTML=timeline("individual");
+document.querySelector("#r1Champions").innerHTML=timeline("r1");
 document.querySelector("#newcomerChampions").innerHTML=timeline("newcomer");
 document.querySelector("#noroshiChampions").innerHTML=timeline("noroshi");
 
