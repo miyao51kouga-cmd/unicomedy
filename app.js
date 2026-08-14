@@ -12037,6 +12037,38 @@ function openUnit(name){
 }
 
 
+
+// 大会結果・ユニット詳細のクリック処理
+document.addEventListener("click",e=>{
+  const unit=e.target.closest("[data-unit]");
+  if(unit){
+    e.preventDefault();
+    e.stopPropagation();
+    openUnit(decodeURIComponent(unit.dataset.unit));
+    return;
+  }
+
+  const hist=e.target.closest("[data-history-event]");
+  if(hist){
+    if(unitDialog.open) unitDialog.close();
+    const [year,type]=hist.dataset.event.split("-");
+    const d=DATA.find(x=>String(x.year)===year&&x.type===type);
+    if(d) openEvent(d);
+    return;
+  }
+
+  const target=e.target.closest("[data-event]");
+  if(!target)return;
+  const [year,type]=target.dataset.event.split("-");
+  const d=DATA.find(x=>String(x.year)===year&&x.type===type);
+  if(d) openEvent(d);
+});
+
+document.querySelector("#closeDialog").addEventListener("click",()=>dialog.close());
+document.querySelector("#closeUnitDialog").addEventListener("click",()=>unitDialog.close());
+dialog.addEventListener("click",e=>{ if(e.target===dialog) dialog.close(); });
+unitDialog.addEventListener("click",e=>{ if(e.target===unitDialog) unitDialog.close(); });
+
 function timeline(type){
   return displayEvents(DATA).filter(d=>d.type===type && !["データ整備中","開催中止"].includes(d.winner)).sort((a,b)=>b.year-a.year).map(d=>{
     const accent=colorForSchool(d.school);
