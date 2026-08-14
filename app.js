@@ -11793,12 +11793,8 @@ DATA.forEach(d=>{
 });
 
 function unitLink(name){
-  const occ=UNIT_INDEX.get(name)||[];
-  const distinct=new Set(occ.map(x=>x.eventKey));
-  const clickable=hasUnitDetails(name) || distinct.size>=2;
-  return clickable
-    ? `<button class="unit-link" data-unit="${encodeURIComponent(name)}">${name}<span aria-hidden="true"> ↗</span></button>`
-    : `<span class="unit-plain">${name}</span>`;
+  // 大会結果に表示されるユニット名はすべてタップ可能にする。
+  return `<button type="button" class="unit-link" data-unit="${encodeURIComponent(name)}">${name}<span aria-hidden="true"> ↗</span></button>`;
 }
 function unitsHTML(units=[]){
   if(!units.length) return "";
@@ -12009,8 +12005,7 @@ function openEvent(d){
 }
 
 function openUnit(name){
-  const meta=UNIT_META[name];
-  if(!meta) return;
+  const meta=UNIT_META[name] || {members:["未登録"],generation:"未登録",generationYear:null};
 
   unitDialogContent.innerHTML=`
     <header class="unit-dialog-head unit-profile-head">
