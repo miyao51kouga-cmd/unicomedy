@@ -167,3 +167,18 @@ footer{padding:32px clamp(20px,7vw,110px);display:flex;justify-content:space-bet
 @media(min-width:821px){
   .champion-columns{grid-template-columns:repeat(3,minmax(0,1fr));gap:38px}
 }
+
+
+/* v35: ユニット詳細（メンバー / 世代） */
+.unit-profile-head{padding-bottom:18px}
+.unit-profile{display:grid;gap:0;border-top:1px solid #d8d3c8}
+.unit-profile-row{display:grid;grid-template-columns:110px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid #d8d3c8;align-items:start}
+.unit-profile-label{font-size:11px;font-weight:900;letter-spacing:.12em;color:#777}
+.unit-profile-members{display:flex;flex-wrap:wrap;gap:8px}
+.unit-profile-members strong{display:inline-flex;align-items:center;min-height:34px;padding:7px 11px;background:#111;color:#fff;font-size:13px;line-height:1.4}
+.unit-generation{display:flex;flex-direction:column;gap:4px}
+.unit-generation strong{font-size:20px;line-height:1.35}
+.unit-generation small{font-size:11px;color:#777;font-weight:700}
+@media(max-width:640px){
+  .unit-profile-row{grid-template-columns:1fr;gap:10px;padding:19px 0}
+}

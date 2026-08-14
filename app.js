@@ -11702,6 +11702,65 @@ function stageLabel(title=""){
 
 // Build an index of unit appearances across all events.
 // NOROSHI's team name is NOT indexed as a unit; its manzai/pin/conte units are.
+
+// ------------------------------------------------------------------
+// UNIT_META
+// 大学お笑い同期ライブの公開情報から確認したメンバー・世代。
+// UIでは「メンバー」「世代」のみ表示する。
+// ------------------------------------------------------------------
+const UNIT_META = {
+  "古着ロケット": {
+    members: ["藤原武豊", "はやじゅん"],
+    generation: "導火線世代",
+    generationYear: 2025
+  },
+  "偽ビートルズ": {
+    members: ["柿澤るうす", "佐藤りくや"],
+    generation: "導火線世代",
+    generationYear: 2025
+  },
+  "ぽちゃむしぃ": {
+    members: ["工藤", "伊藤"],
+    generation: "導火線世代",
+    generationYear: 2025
+  },
+  "桃ピン": {
+    members: ["穴井"],
+    generation: "こんにちは伝説世代",
+    generationYear: 2024
+  },
+  "ミニー": {
+    members: ["五十嵐"],
+    generation: "こんにちは伝説世代",
+    generationYear: 2024
+  },
+  "ナカヤ": {
+    members: ["山田"],
+    generation: "こんにちは伝説世代",
+    generationYear: 2024
+  },
+  "カンタービレ": {
+    members: ["中山", "日野上"],
+    generation: "待てど暮らせど世代",
+    generationYear: 2022
+  },
+  "冠婚葬祭獣": {
+    members: ["菅原", "藤原"],
+    generation: "待てど暮らせど世代",
+    generationYear: 2022
+  },
+  "ボルシチダイナマイト": {
+    members: ["宮住", "田中"],
+    generation: "待てど暮らせど世代",
+    generationYear: 2022
+  }
+};
+
+function hasUnitDetails(name){
+  const meta=UNIT_META[name];
+  return !!(meta && Array.isArray(meta.members) && meta.members.length && meta.generation);
+}
+
 const UNIT_INDEX = new Map();
 function pushOccurrence(name, occ){
   if(!name || name==="—") return;
@@ -11736,7 +11795,8 @@ DATA.forEach(d=>{
 function unitLink(name){
   const occ=UNIT_INDEX.get(name)||[];
   const distinct=new Set(occ.map(x=>x.eventKey));
-  return distinct.size>=2
+  const clickable=hasUnitDetails(name) || distinct.size>=2;
+  return clickable
     ? `<button class="unit-link" data-unit="${encodeURIComponent(name)}">${name}<span aria-hidden="true"> ↗</span></button>`
     : `<span class="unit-plain">${name}</span>`;
 }
@@ -11949,49 +12009,33 @@ function openEvent(d){
 }
 
 function openUnit(name){
-  const occ=(UNIT_INDEX.get(name)||[]).slice().sort((a,b)=>b.year-a.year || b.score-a.score);
+  const meta=UNIT_META[name];
+  if(!meta) return;
+
   unitDialogContent.innerHTML=`
-    <header class="unit-dialog-head">
-      <span class="dialog-kicker">UNIT HISTORY</span>
+    <header class="unit-dialog-head unit-profile-head">
+      <span class="dialog-kicker">UNIT PROFILE</span>
       <h2>${name}</h2>
-      <p>同一ユニット名で確認できた別大会の最高到達点です。同じ大会内の予選→準決勝→決勝は、最も先まで進んだ段階だけ表示します。</p>
     </header>
-    <div class="unit-history-list">
-      ${occ.map(o=>`<button class="unit-history-row" data-event="${o.eventKey}">
-        <span>他</span>
-        <b>${o.event.replace(" 個人戦","")}</b>
-        <strong>${o.stage}</strong>
-        ${o.genre?`<small>${o.genre}${o.team?` / ${o.team}`:""}</small>`:""}
-      </button>`).join("")}
+    <div class="unit-profile">
+      <section class="unit-profile-row">
+        <span class="unit-profile-label">メンバー</span>
+        <div class="unit-profile-members">
+          ${meta.members.map(member=>`<strong>${member}</strong>`).join("")}
+        </div>
+      </section>
+      <section class="unit-profile-row">
+        <span class="unit-profile-label">世代</span>
+        <div class="unit-generation">
+          <strong>${meta.generation}</strong>
+          ${meta.generationYear ? `<small>${meta.generationYear}世代</small>` : ""}
+        </div>
+      </section>
     </div>`;
+
   unitDialog.showModal();
 }
 
-document.addEventListener("click",e=>{
-  const u=e.target.closest("[data-unit]");
-  if(u){
-    e.preventDefault(); e.stopPropagation();
-    openUnit(decodeURIComponent(u.dataset.unit));
-    return;
-  }
-  const hist=e.target.closest(".unit-history-row");
-  if(hist){
-    unitDialog.close();
-    const [year,type]=hist.dataset.event.split("-");
-    const d=DATA.find(x=>String(x.year)===year&&x.type===type);
-    if(d) openEvent(d);
-    return;
-  }
-  const target=e.target.closest("[data-event]");
-  if(!target)return;
-  const [year,type]=target.dataset.event.split("-");
-  const d=DATA.find(x=>String(x.year)===year&&x.type===type);
-  if(d) openEvent(d);
-});
-document.querySelector("#closeDialog").addEventListener("click",()=>dialog.close());
-document.querySelector("#closeUnitDialog").addEventListener("click",()=>unitDialog.close());
-dialog.addEventListener("click",e=>{ if(e.target===dialog) dialog.close(); });
-unitDialog.addEventListener("click",e=>{ if(e.target===unitDialog) unitDialog.close(); });
 
 function timeline(type){
   return displayEvents(DATA).filter(d=>d.type===type && !["データ整備中","開催中止"].includes(d.winner)).sort((a,b)=>b.year-a.year).map(d=>{
