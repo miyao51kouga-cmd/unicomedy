@@ -11756,6 +11756,76 @@ const UNIT_META = {
   }
 };
 
+
+// 同期ライブ調査で確認した追加世代。
+// メンバー名が未確認のものは、世代だけ登録する。
+const RESEARCH_GENERATION_META = {
+  // 2023世代：まだ足りないsomething
+  "ヘビンザ・モニター": { generation:"まだ足りないsomething世代", generationYear:2023 },
+
+  // 2021世代：光り物
+  "ストロングブルジュニア": { generation:"光り物世代", generationYear:2021 },
+  "スメタナ": { generation:"光り物世代", generationYear:2021 },
+  "地下の部室": { generation:"光り物世代", generationYear:2021 },
+  "ドラゴンレッド": { generation:"光り物世代", generationYear:2021 },
+  "ナユタ": { generation:"光り物世代", generationYear:2021 },
+  "2番目のアポロ": { generation:"光り物世代", generationYear:2021 },
+  "ベロニカは死ぬ": { generation:"光り物世代", generationYear:2021 },
+
+  // 2018世代：破竹
+  "青御膳": { generation:"破竹世代", generationYear:2018 },
+  "えびしゃ": { generation:"破竹世代", generationYear:2018 },
+  "清水駿平": { generation:"破竹世代", generationYear:2018 },
+  "鳥山明・暗": { generation:"破竹世代", generationYear:2018 },
+  "サイハテ": { generation:"破竹世代", generationYear:2018 }
+};
+
+Object.entries(RESEARCH_GENERATION_META).forEach(([name,meta])=>{
+  UNIT_META[name] = {
+    members: UNIT_META[name]?.members || ["未登録"],
+    ...UNIT_META[name],
+    ...meta
+  };
+});
+
+// 表記揺れ：新人戦2026の香盤では「ぽちゃむしい」表記。
+// 導火線の演者紹介で確認した「ぽちゃむしぃ」と同じ詳細を表示する。
+UNIT_META["ぽちゃむしい"] = {
+  members:["工藤","伊藤"],
+  generation:"導火線世代",
+  generationYear:2025
+};
+
+// 新人戦の大会年と、大学お笑い開始世代の対応。
+// 新人戦2026 = 導火線世代、以後1年ずつ下がる。
+const NEWCOMER_GENERATION_BY_YEAR = {
+  2026: { generation:"導火線世代", generationYear:2025 },
+  2025: { generation:"こんにちは伝説世代", generationYear:2024 },
+  2024: { generation:"まだ足りないsomething世代", generationYear:2023 },
+  2023: { generation:"待てど暮らせど世代", generationYear:2022 },
+  2022: { generation:"光り物世代", generationYear:2021 }
+};
+
+// 新人戦「決勝戦 香盤」の全ユニットへ世代を登録。
+// 既にメンバーが分かっているユニットは、そのメンバー情報を保持する。
+DATA.filter(d=>d.type==="newcomer").forEach(d=>{
+  const generationMeta = NEWCOMER_GENERATION_BY_YEAR[d.year];
+  if(!generationMeta) return;
+
+  const finalLineupStages = (d.stages||[]).filter(s=>s.title.includes("決勝戦"));
+  finalLineupStages.forEach(stage=>{
+    (stage.entries||[]).forEach(entry=>{
+      const name = entry?.[1];
+      if(!name || name==="—") return;
+      UNIT_META[name] = {
+        members: UNIT_META[name]?.members || ["未登録"],
+        ...UNIT_META[name],
+        ...generationMeta
+      };
+    });
+  });
+});
+
 function hasUnitDetails(name){
   const meta=UNIT_META[name];
   return !!(meta && Array.isArray(meta.members) && meta.members.length && meta.generation);
@@ -12006,12 +12076,16 @@ function openEvent(d){
 
 function openUnit(name){
   const meta=UNIT_META[name] || {members:["未登録"],generation:"未登録",generationYear:null};
+  const occ=(UNIT_INDEX.get(name)||[])
+    .slice()
+    .sort((a,b)=>b.year-a.year || b.score-a.score);
 
   unitDialogContent.innerHTML=`
     <header class="unit-dialog-head unit-profile-head">
       <span class="dialog-kicker">UNIT PROFILE</span>
       <h2>${name}</h2>
     </header>
+
     <div class="unit-profile">
       <section class="unit-profile-row">
         <span class="unit-profile-label">メンバー</span>
@@ -12019,6 +12093,7 @@ function openUnit(name){
           ${meta.members.map(member=>`<strong>${member}</strong>`).join("")}
         </div>
       </section>
+
       <section class="unit-profile-row">
         <span class="unit-profile-label">世代</span>
         <div class="unit-generation">
@@ -12026,12 +12101,28 @@ function openUnit(name){
           ${meta.generationYear ? `<small>${meta.generationYear}世代</small>` : ""}
         </div>
       </section>
-    </div>`;
+    </div>
+
+    <section class="unit-history-section">
+      <div class="unit-history-title">
+        <span class="unit-profile-label">大会履歴</span>
+        <small>同じ大会内では最も先まで進んだ段階のみ表示</small>
+      </div>
+
+      <div class="unit-history-list">
+        ${occ.length
+          ? occ.map(o=>`<button type="button" class="unit-history-row" data-history-event="${o.eventKey}">
+              <span>他</span>
+              <b>${o.event.replace(" 個人戦","")}</b>
+              <strong>${o.stage}</strong>
+              ${o.genre?`<small>${o.genre}${o.team?` / ${o.team}`:""}</small>`:""}
+            </button>`).join("")
+          : `<p class="unit-history-empty">ほかの大会結果は未登録です。</p>`}
+      </div>
+    </section>`;
 
   unitDialog.showModal();
 }
-
-
 
 // 大会結果・ユニット詳細のクリック処理
 document.addEventListener("click",e=>{
