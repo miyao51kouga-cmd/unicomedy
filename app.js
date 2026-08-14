@@ -11760,31 +11760,148 @@ const UNIT_META = {
 // 同期ライブ調査で確認した追加世代。
 // メンバー名が未確認のものは、世代だけ登録する。
 const RESEARCH_GENERATION_META = {
-  // 2023世代：まだ足りないsomething
-  "ヘビンザ・モニター": { generation:"まだ足りないsomething世代", generationYear:2023 },
+  // 導火線 @fuse_douki — 2025世代
+  "古着ロケット": {
+    members:["藤原武豊","はやじゅん"],
+    generation:"導火線世代",
+    generationYear:2025,
+    sourceAccount:"@fuse_douki"
+  },
+  "偽ビートルズ": {
+    members:["柿澤るうす","佐藤りくや"],
+    generation:"導火線世代",
+    generationYear:2025,
+    sourceAccount:"@fuse_douki"
+  },
+  "ぽちゃむしぃ": {
+    members:["工藤","伊藤"],
+    generation:"導火線世代",
+    generationYear:2025,
+    sourceAccount:"@fuse_douki"
+  },
 
-  // 2021世代：光り物
-  "ストロングブルジュニア": { generation:"光り物世代", generationYear:2021 },
-  "スメタナ": { generation:"光り物世代", generationYear:2021 },
-  "地下の部室": { generation:"光り物世代", generationYear:2021 },
-  "ドラゴンレッド": { generation:"光り物世代", generationYear:2021 },
-  "ナユタ": { generation:"光り物世代", generationYear:2021 },
-  "2番目のアポロ": { generation:"光り物世代", generationYear:2021 },
-  "ベロニカは死ぬ": { generation:"光り物世代", generationYear:2021 },
+  // こんにちは伝説 @HelloRegend — 2024世代
+  "桃ピン": {
+    members:["穴井"],
+    generation:"こんにちは伝説世代",
+    generationYear:2024,
+    sourceAccount:"@HelloRegend"
+  },
+  "ミニー": {
+    members:["五十嵐"],
+    generation:"こんにちは伝説世代",
+    generationYear:2024,
+    sourceAccount:"@HelloRegend"
+  },
+  "ナカヤ": {
+    members:["山田"],
+    generation:"こんにちは伝説世代",
+    generationYear:2024,
+    sourceAccount:"@HelloRegend"
+  },
 
-  // 2018世代：破竹
-  "青御膳": { generation:"破竹世代", generationYear:2018 },
-  "えびしゃ": { generation:"破竹世代", generationYear:2018 },
-  "清水駿平": { generation:"破竹世代", generationYear:2018 },
-  "鳥山明・暗": { generation:"破竹世代", generationYear:2018 },
-  "サイハテ": { generation:"破竹世代", generationYear:2018 }
+  // まだ足りないsomething @2023_something — 2023世代
+  "ヘビンザ・モニター": {
+    generation:"まだ足りないsomething世代",
+    generationYear:2023,
+    sourceAccount:"@2023_something"
+  },
+
+  // 待てど暮らせど @matedokurasedo_ — 2022世代
+  "カンタービレ": {
+    members:["中山","日野上"],
+    generation:"待てど暮らせど世代",
+    generationYear:2022,
+    sourceAccount:"@matedokurasedo_"
+  },
+  "冠婚葬祭獣": {
+    members:["菅原","藤原"],
+    generation:"待てど暮らせど世代",
+    generationYear:2022,
+    sourceAccount:"@matedokurasedo_"
+  },
+  "ボルシチダイナマイト": {
+    members:["宮住","田中"],
+    generation:"待てど暮らせど世代",
+    generationYear:2022,
+    sourceAccount:"@matedokurasedo_"
+  },
+  "カオスネルドラント": {
+    generation:"待てど暮らせど世代",
+    generationYear:2022,
+    sourceAccount:"@matedokurasedo_ / @shinjinsen_"
+  },
+
+  // 光り物 @live_hikarimono — 2021世代
+  "ストロングブルジュニア": {
+    generation:"光り物世代",
+    generationYear:2021,
+    sourceAccount:"@live_hikarimono"
+  },
+  "スメタナ": {
+    generation:"光り物世代",
+    generationYear:2021,
+    sourceAccount:"@live_hikarimono"
+  },
+  "地下の部室": {
+    generation:"光り物世代",
+    generationYear:2021,
+    sourceAccount:"@live_hikarimono"
+  },
+  "ドラゴンレッド": {
+    generation:"光り物世代",
+    generationYear:2021,
+    sourceAccount:"@live_hikarimono"
+  },
+  "ナユタ": {
+    generation:"光り物世代",
+    generationYear:2021,
+    sourceAccount:"@live_hikarimono"
+  },
+  "2番目のアポロ": {
+    generation:"光り物世代",
+    generationYear:2021,
+    sourceAccount:"@live_hikarimono"
+  },
+  "ベロニカは死ぬ": {
+    generation:"光り物世代",
+    generationYear:2021,
+    sourceAccount:"@live_hikarimono"
+  },
+
+  // 破竹 @douki2019 — 2018世代
+  "青御膳": {
+    generation:"破竹世代",
+    generationYear:2018,
+    sourceAccount:"@douki2019"
+  },
+  "えびしゃ": {
+    generation:"破竹世代",
+    generationYear:2018,
+    sourceAccount:"@douki2019"
+  },
+  "清水駿平": {
+    generation:"破竹世代",
+    generationYear:2018,
+    sourceAccount:"@douki2019"
+  },
+  "鳥山明・暗": {
+    generation:"破竹世代",
+    generationYear:2018,
+    sourceAccount:"@douki2019"
+  },
+  "サイハテ": {
+    generation:"破竹世代",
+    generationYear:2018,
+    sourceAccount:"@douki2019"
+  }
 };
 
 Object.entries(RESEARCH_GENERATION_META).forEach(([name,meta])=>{
   UNIT_META[name] = {
-    members: UNIT_META[name]?.members || ["未登録"],
     ...UNIT_META[name],
-    ...meta
+    ...meta,
+    members: meta.members || UNIT_META[name]?.members || ["未登録"]
   };
 });
 
@@ -11793,7 +11910,8 @@ Object.entries(RESEARCH_GENERATION_META).forEach(([name,meta])=>{
 UNIT_META["ぽちゃむしい"] = {
   members:["工藤","伊藤"],
   generation:"導火線世代",
-  generationYear:2025
+  generationYear:2025,
+  sourceAccount:"@fuse_douki"
 };
 
 // 新人戦の大会年と、大学お笑い開始世代の対応。
